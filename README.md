@@ -35,7 +35,7 @@ Opcionalmente, recomenda-se utilizar o NVM para gerenciamento de versões do Nod
 ### 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+git clone https://github.com/raveljalmeida/InterfaceWeb-FaceOff.git
 cd SEU-REPOSITORIO
 ```
 
