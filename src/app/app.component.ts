@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from './components/home/home.component'; // <-- 1. IMPORTANTE: Verifique se o caminho da pasta está certinho
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [HomeComponent], // <-- 2. ADICIONE AQUI (pode apagar o RouterOutlet se não estiver usando)
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styles: []
 })
 export class AppComponent {
-  title = 'monitor-unifei-teste';
+  title = 'monitor-unifei';
 }

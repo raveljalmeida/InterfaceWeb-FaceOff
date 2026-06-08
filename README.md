@@ -1,59 +1,128 @@
-# MonitorUnifeiTeste
+# Monitor UNIFEI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Sistema web desenvolvido para monitoramento de salas por meio da integração com o Firebase Realtime Database. A aplicação exibe, em tempo real, informações coletadas por dispositivos IoT e disponibilizadas em um dashboard desenvolvido com Angular.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+* Visualização de dados em tempo real.
+* Integração com Firebase Realtime Database.
+* Interface responsiva desenvolvida com Angular.
+* Atualização automática dos dados sem necessidade de recarregar a página.
+* Estrutura preparada para expansão de novos sensores e métricas.
+
+## Tecnologias Utilizadas
+
+* Angular
+* TypeScript
+* Firebase Realtime Database
+* Tailwind CSS
+* Node.js
+* NPM
+
+## Pré-requisitos
+
+Antes de executar o projeto, certifique-se de possuir:
+
+* Node.js (versão LTS recomendada)
+* NPM
+* Angular CLI
+* Git
+
+Opcionalmente, recomenda-se utilizar o NVM para gerenciamento de versões do Node.js.
+
+## Instalação
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+cd SEU-REPOSITORIO
+```
+
+### 2. Instalar as dependências
+
+```bash
+npm install
+```
+
+### 3. Instalar o Angular CLI
+
+```bash
+npm install -g @angular/cli
+```
+
+### 4. Configurar o Firebase
+
+Localize o arquivo:
+
+```text
+src/app/services/room.service.ts
+```
+
+Substitua o valor da variável `apiUrl` pela URL da sua instância do Firebase Realtime Database.
+
+Exemplo:
+
+```typescript
+private apiUrl = 'https://seu-projeto-default-rtdb.firebaseio.com';
+```
+
+## Executando a aplicação
+
+Inicie o servidor de desenvolvimento:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Após a inicialização, acesse:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Estrutura do Projeto
 
-```bash
-ng generate --help
+```text
+src/
+├── app/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── models/
+├── assets/
+├── environments/
+└── styles/
 ```
 
-## Building
+## Firebase
 
-To build the project run:
+Este projeto utiliza o Firebase Realtime Database como fonte de dados.
+
+Para criar uma instância:
+
+1. Acesse o Firebase Console.
+2. Crie um novo projeto.
+3. Ative o Realtime Database.
+4. Copie a URL do banco.
+5. Atualize a variável `apiUrl` no projeto.
+
+## Desenvolvimento
+
+Executar servidor local:
+
+```bash
+ng serve
+```
+
+Gerar build de produção:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Executar testes:
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,0 +1,79 @@
+<div class="min-h-screen bg-gray-100 pb-12">
+  
+  <header class="bg-[#002A54] text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="border-r border-white/30 pr-4">
+          <span class="text-xl font-black tracking-wider block">UNIFEI</span>
+          <span class="text-[10px] text-slate-300 block uppercase tracking-widest">Universidade Federal de Itajubá</span>
+        </div>
+        <h1 class="text-lg font-medium text-slate-200">OndeEstudar?</h1>
+      </div>
+      
+      <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-full text-xs font-medium">
+        <span>📍 Campus Itajubá</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 mt-8">
+    
+    <div class="bg-white rounded-xl p-4 shadow-sm mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border border-gray-200">
+      <p class="text-slate-700 font-medium">
+        Olá! O sistema está monitorando a ocupação das salas de estudo em tempo real.
+      </p>
+      
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-[#002A54] text-white text-xs px-3 py-1.5 rounded-md font-medium shadow-sm">Ver Todas</button>
+        <button class="bg-gray-100 text-slate-600 hover:bg-gray-200 text-xs px-3 py-1.5 rounded-md font-medium transition-colors">Só as Livres 🟢</button>
+        <button class="bg-gray-100 text-slate-600 hover:bg-gray-200 text-xs px-3 py-1.5 rounded-md font-medium transition-colors">Laboratórios</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div *ngFor="let sala of salas" 
+           class="bg-white rounded-xl shadow-sm border-l-[6px] overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md flex flex-col justify-between h-64"
+           [ngClass]="{
+             'border-[#2EC4B6]': sala.quantidade === 0,
+             'border-[#FFB300]': sala.quantidade > 0 && sala.quantidade < sala.capacidadeMax,
+             'border-[#D90429]': sala.quantidade >= sala.capacidadeMax
+           }">
+        
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-3">
+            <h3 class="text-lg font-bold text-slate-800 tracking-tight leading-tight">{{ sala.ambiente }}</h3>
+            
+            <span *ngIf="!sala.isFake" class="flex h-2.5 w-2.5 relative mt-1.5" title="Monitoramento ao vivo">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+            </span>
+          </div>
+          
+          <div class="mb-4">
+            <p class="text-sm text-slate-500">Ocupação Atual</p>
+            <p class="text-2xl font-black text-slate-800 mt-0.5">
+              {{ sala.quantidade }} <span class="text-sm font-normal text-slate-400">/ {{ sala.capacidadeMax }} pessoas</span>
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5">
+            <span *ngIf="sala.temTomada" class="inline-flex items-center gap-1 bg-amber-50 text-amber-700 text-[11px] px-2.5 py-0.5 rounded-md font-semibold border border-amber-100">
+              🔌 Tomadas nas mesas
+            </span>
+            <span *ngIf="!sala.isFake" class="inline-flex items-center bg-blue-50 text-blue-700 text-[11px] px-2.5 py-0.5 rounded-md font-semibold border border-blue-100">
+              🖥️ Computadores
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 px-5 py-2.5 border-t border-gray-100 flex justify-between items-center text-[11px] text-slate-400 font-medium">
+          <span class="flex items-center gap-1">⏱️ {{ sala.ultimaAtualizacao }}</span>
+          <span *ngIf="!sala.isFake" class="text-[10px] bg-emerald-50 text-emerald-700 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider">Raspberry Ativo</span>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
