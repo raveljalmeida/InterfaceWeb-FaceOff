@@ -36,7 +36,7 @@ Opcionalmente, recomenda-se utilizar o NVM para gerenciamento de versões do Nod
 
 ```bash
 git clone https://github.com/raveljalmeida/InterfaceWeb-FaceOff.git
-cd SEU-REPOSITORIO
+cd "Caminho para a pasta do projeto"
 ```
 
 ### 2. Instalar as dependências
